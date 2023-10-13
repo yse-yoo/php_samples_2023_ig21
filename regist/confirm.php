@@ -2,19 +2,24 @@
 // PHP program
 $regist = $_POST;
 
-$genders['male'] = "男性"; 
-$genders['female'] = "女性"; 
+$genders['male'] = "男性";
+$genders['female'] = "女性";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=3.0">
     <title>Regist</title>
 </head>
+
 <body>
+<?php include('../components/nav.php'); ?>
+
+
     <h1>確認画面</h1>
     <p>この内容で登録してもよろしいですか？</p>
     <form action="store.php" method="post">
@@ -37,4 +42,5 @@ $genders['female'] = "女性";
         <button>登録</button>
     </form>
 </body>
+
 </html>
