@@ -1,7 +1,7 @@
 <?php
 // PHP program
 $regist = $_POST;
-// var_dump($regist);
+
 $genders['male'] = "男性"; 
 $genders['female'] = "女性"; 
 ?>
@@ -17,7 +17,7 @@ $genders['female'] = "女性";
 <body>
     <h1>確認画面</h1>
     <p>この内容で登録してもよろしいですか？</p>
-    <form action="" method="post">
+    <form action="store.php" method="post">
         <div>
             <label for="">氏名</label>
             <?= $regist['name'] ?>
