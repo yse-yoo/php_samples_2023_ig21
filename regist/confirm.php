@@ -3,7 +3,7 @@
 session_start();
 session_regenerate_id(true);
 
-// PHP program
+// POSTリクエストのデータを 変数 regist に代入
 $regist = $_POST;
 
 //TODO: データチェック

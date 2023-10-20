@@ -12,6 +12,9 @@
         <li class="nav-item">
           <a class="nav-link" href="../regist/input.php">会員登録</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ログイン</a>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

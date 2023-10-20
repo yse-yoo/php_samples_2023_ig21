@@ -6,10 +6,25 @@ session_regenerate_id(true);
 if (isset($_SESSION['regist'])) {
     $regist = $_SESSION['regist'];
 }
+
+$genders['male'] = "男性";
+$genders['female'] = "女性";
+
+function checked($value, $checkValue)
+{
+    return ($value == $checkValue) ? 'checked' : '';
+}
+
+function selected($value, $checkValue)
+{
+    return ($value == $checkValue) ? 'selected' : '';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- 1つ上の階層の componentsフォルダの head.php を読み込む -->
 <?php include('../components/head.php'); ?>
 
 <body>
@@ -34,26 +49,30 @@ if (isset($_SESSION['regist'])) {
                 <label class="form-label" for="">生年月日</label>
                 <select class="form-control" name="year">
                     <?php foreach (range(1900, date('Y')) as $year) : ?>
-                        <option value="<?= $year ?>"><?= $year ?></option>
+                        <option value="<?= $year ?>" <?= selected($year, $regist['year']) ?>><?= $year ?></option>
                     <?php endforeach ?>
                 </select>
                 <select class="form-control" name="month">
                     <?php foreach (range(1, 12) as $month) : ?>
-                        <option value="<?= $month ?>"><?= $month ?></option>
+                        <option value="<?= $month ?>" <?= selected($month, $regist['month']) ?>><?= $month ?></option>
                     <?php endforeach ?>
                 </select>
                 <select class="form-control" name="day">
                     <?php foreach (range(1, 31) as $day) : ?>
-                        <option value="<?= $day ?>"><?= $day ?></option>
+                        <option value="<?= $day ?>" <?= selected($day, $regist['day']) ?>><?= $day ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
             <div>
                 <label class="form-label" for="">性別</label>
-                <input id="male" type="radio" name="gender" value="male">
-                <label for="male">Male</label>
-                <input id="female" type="radio" name="gender" value="female">
-                <label for="female">Female</label>
+                <div class="form-check">
+                    <input id="male" type="radio" name="gender" value="male" <?= checked('male', @$regist['gender']) ?>>
+                    <label for="male"><?= $genders['male'] ?></label>
+                </div>
+                <div class="form-check">
+                    <input id="female" type="radio" name="gender" value="female" <?= checked('female', @$regist['gender']) ?>>
+                    <label for="female"><?= $genders['female'] ?></label>
+                </div>
             </div>
             <button class="btn btn-primary">確認</button>
         </form>

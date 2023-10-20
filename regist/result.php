@@ -1,5 +1,8 @@
 <?php
 //TODO：セッションチェック
+session_start();
+session_regenerate_id(true);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
