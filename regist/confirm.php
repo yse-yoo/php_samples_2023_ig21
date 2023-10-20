@@ -6,15 +6,9 @@ session_regenerate_id(true);
 // POSTリクエストのデータを 変数 regist に代入
 $regist = check($_POST);
 
-//TODO: データチェック
-// パスワードが8文字以上、20文字以内でなければ、入力画面にリダイレクト
-if (
-    mb_strlen($regist['password']) < 8 ||
-    mb_strlen($regist['password']) > 20
-) {
-    $_SESSION['errors']['password'] = "パスワードは８文字以上、20文字以内で入力してください";
-    header('Location: input.php');
-}
+//TODO: データチェック（バリデーション）
+validateName($regist['name']);
+validatePassword($regist['password']);
 
 // セッション保存
 $_SESSION['regist'] = $regist;
@@ -22,6 +16,33 @@ $_SESSION['regist'] = $regist;
 $genders['male'] = "男性";
 $genders['female'] = "女性";
 
+/**
+ * バリデート（validate）
+ */
+function validateName($name)
+{
+    // パスワードが8文字以上、20文字以内でなければ、入力画面にリダイレクト
+    if (empty($name)) {
+        $_SESSION['errors']['name'] = "名前を入力してください";
+        header('Location: input.php');
+    }
+}
+
+
+/**
+ * バリデート（validate）
+ */
+function validatePassword($password)
+{
+    // パスワードが8文字以上、20文字以内でなければ、入力画面にリダイレクト
+    if (
+        mb_strlen($password) < 8 ||
+        mb_strlen($password) > 20
+    ) {
+        $_SESSION['errors']['password'] = "パスワードは８文字以上、20文字以内で入力してください";
+        header('Location: input.php');
+    }
+}
 
 /**
  * サニタイズ
