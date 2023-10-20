@@ -61,17 +61,17 @@ function selected($value, $checkValue)
                 <label class="form-label" for="">生年月日</label>
                 <select class="form-control" name="year">
                     <?php foreach (range(1900, date('Y')) as $year) : ?>
-                        <option value="<?= $year ?>" <?= selected($year, $regist['year']) ?>><?= $year ?></option>
+                        <option value="<?= $year ?>" <?= selected($year, @$regist['year']) ?>><?= $year ?></option>
                     <?php endforeach ?>
                 </select>
                 <select class="form-control" name="month">
                     <?php foreach (range(1, 12) as $month) : ?>
-                        <option value="<?= $month ?>" <?= selected($month, $regist['month']) ?>><?= $month ?></option>
+                        <option value="<?= $month ?>" <?= selected($month, @$regist['month']) ?>><?= $month ?></option>
                     <?php endforeach ?>
                 </select>
                 <select class="form-control" name="day">
                     <?php foreach (range(1, 31) as $day) : ?>
-                        <option value="<?= $day ?>" <?= selected($day, $regist['day']) ?>><?= $day ?></option>
+                        <option value="<?= $day ?>" <?= selected($day, @$regist['day']) ?>><?= $day ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
