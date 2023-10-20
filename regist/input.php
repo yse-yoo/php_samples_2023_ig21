@@ -6,6 +6,9 @@ session_regenerate_id(true);
 if (isset($_SESSION['regist'])) {
     $regist = $_SESSION['regist'];
 }
+if (isset($_SESSION['errors'])) {
+    $errors = $_SESSION['errors'];
+}
 
 $genders['male'] = "男性";
 $genders['female'] = "女性";
@@ -32,6 +35,12 @@ function selected($value, $checkValue)
 
     <div class="container">
         <h1>入力画面</h1>
+
+        <ul>
+            <?php foreach ($errors as $error) : ?>
+                <li class="text-danger"><?= $error ?></li>
+            <?php endforeach ?>
+        </ul>
         <form action="confirm.php" method="post">
             <div class="form-group">
                 <label class="form-label" for="">氏名</label>

@@ -4,9 +4,17 @@ session_start();
 session_regenerate_id(true);
 
 // POSTリクエストのデータを 変数 regist に代入
-$regist = $_POST;
+$regist = check($_POST);
 
 //TODO: データチェック
+// パスワードが8文字以上、20文字以内でなければ、入力画面にリダイレクト
+if (
+    mb_strlen($regist['password']) < 8 ||
+    mb_strlen($regist['password']) > 20
+) {
+    $_SESSION['errors']['password'] = "パスワードは８文字以上、20文字以内で入力してください";
+    header('Location: input.php');
+}
 
 // セッション保存
 $_SESSION['regist'] = $regist;
