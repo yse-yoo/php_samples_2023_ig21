@@ -36,11 +36,14 @@ function selected($value, $checkValue)
     <div class="container">
         <h1>入力画面</h1>
 
+        <?php if (isset($errors)): ?>
         <ul>
             <?php foreach ($errors as $error) : ?>
                 <li class="text-danger"><?= $error ?></li>
             <?php endforeach ?>
         </ul>
+        <?php endif ?>
+
         <form action="confirm.php" method="post">
             <div class="form-group">
                 <label class="form-label" for="">氏名</label>
